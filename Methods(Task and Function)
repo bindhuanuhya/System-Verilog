@@ -1,0 +1,65 @@
+Pass By Value:
+-->Here values are copied.
+-->In pass by value method values and arguments are different(holds different values).
+-->Appicable for single bit/scalars.
+
+TESTBENCH CODE:
+module top;
+  task swap(input bit[3:0]a,b);
+    // and b are called arguments
+    bit [3:0] temp;
+    temp = a;
+    a = b;
+    b = temp;
+    $display("a=%0d,b=%0d",a,b);//a=7,b=9
+  endtask
+  bit [3:0]a;
+  bit [3:0]b;
+  // a and b are called variables 
+  initial begin
+    a=9;
+    b=7;
+    swap(a,b);
+     $display("a=%0d,b=%0d",a,b);
+  end 
+endmodule
+
+OUTPUT:
+a=7,b=9
+a=9,b=7
+
+PASS BY REFERENCE:
+--->Here values are modified.
+--->IN pass by reference both values/variables or arguments are same(holds same values).
+--->Pass by reference are appicable for multi bit/vectors.
+
+
+TESTBENCH CODE:
+module top;
+  task automatic swap(ref bit[3:0]a,b);
+    // and b are called arguments
+    bit [3:0] temp;
+    temp = a;
+    a = b;
+    b = temp;
+    $display("a=%0d,b=%0d",a,b);//a=7,b=9
+  endtask
+  bit [3:0]a;
+  bit [3:0]b;
+  // a and b are called variables 
+  initial begin
+    a=9;
+    b=7;
+    swap(a,b);
+     $display("a=%0d,b=%0d",a,b);
+  end 
+endmodule
+
+OUTPUT:
+a=7,b=9
+a=7,b=9
+
+
+
+
+
