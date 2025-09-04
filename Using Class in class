@@ -1,0 +1,25 @@
+class first;
+  int data=50;
+endclass
+class second;
+  first f;
+  function new();
+    f=new();
+  endfunction
+endclass
+
+module tb;
+  second s;
+  initial begin
+   // f=new();//null pointer access error
+    s=new();
+    $display("data=%0d",s.f.data);
+    s.f.data=60;
+    $display("data=%0d",s.f.data);
+  end
+endmodule
+    
+
+output:
+data=50
+data=60
