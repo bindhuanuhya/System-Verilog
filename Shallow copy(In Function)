@@ -1,0 +1,46 @@
+class packet;
+  int count=500;
+endclass
+
+class vlsi;
+  int a;
+  int b;
+  packet pck=new();
+   function void print();
+     $display("a=%d",a);
+     $display("b=%d",b);
+    $display("pck=%p",pck.count);
+  endfunction
+endclass
+module top;
+  vlsi v1,v2;
+  initial
+    begin
+      v1=new();
+      v2=new();
+      v2.a=15;
+      v1=new v2;
+      v1.print();
+      v2.print();
+      v2.a=60;
+      v2.b=30;
+      v2.pck.count=600;
+      v1.print();
+      v2.print();
+    end
+endmodule
+
+
+OUTPUT:
+a=15
+b=0
+pck=500
+a=15
+b=0
+pck=500
+a=15
+b=0
+pck=600
+a=60
+b=30
+pck=600
