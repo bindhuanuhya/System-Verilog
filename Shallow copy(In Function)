@@ -1,3 +1,7 @@
+SYNTAX:
+Destination_Handle = new Source_Handle
+
+
 class packet;
   int count=500;
 endclass
