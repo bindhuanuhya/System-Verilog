@@ -1,0 +1,23 @@
+//static casting 
+module top;
+  int x; // signed data type (32 bit wide )
+  byte unsigned y; // un_signed data type (8 bit )
+  initial begin 
+    x=-15;
+    y=x;// simple codes
+    $display("y=%0d",y);
+    y=byte'(x);//explict conversion //complex codes
+    $display("y=%0d",y);
+  end
+endmodule
+
+OUTPUT:
+y=241
+y=241
+
+
+---> the unsigned value of y will convert into signed value 
+             1 byte=8bits
+                 2^8=256-15=241 // 2's compliment
+BIT
+--->will not be used because the bit will assign only  0 or 1
