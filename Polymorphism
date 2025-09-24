@@ -1,0 +1,42 @@
+// Code your testbench here
+// or browse Examples
+//code for polymorphism
+class remote;
+  virtual function void presspower();
+    $display("Default:NO device connected");
+  endfunction
+endclass
+
+class fan extends remote;
+  function void presspower();
+    $display("fan ON/OFF");
+  endfunction
+endclass
+
+class ac extends remote;
+  function void presspower();
+    $display("ac ON/OFF");
+  endfunction
+endclass
+
+class light extends remote;
+  function void presspower();
+    $display("light ON/OFF");
+  endfunction
+endclass
+
+module tb;
+  remote device[3];
+  initial begin
+    //polymorphism
+    //base class= child class 
+    device[0]=fan::new();
+    device[1]=ac::new();
+    device[2]=light::new();
+    foreach(device[i])device[i].presspower();
+  end
+endmodule
+    OUTPUT:
+ fan ON/OFF
+ ac ON/OFF
+ light ON/OFF
